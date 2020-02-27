@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<div class="page">
+  <h1 class="page-title">
+    {{ page.title }}
+    {% unless site.jekyll-theme-1024Hertz.page.title.site_title.disable %}
+    <small>
+      <a href="{{ site.baseurl }}/" title="{{ site.title }}">
+        {{ site.title }}
+      </a>
+    </small>
+    {% endunless %}
+  </h1>
+  {{ content }}
+</div>

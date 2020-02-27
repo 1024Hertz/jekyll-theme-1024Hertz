@@ -1,0 +1,325 @@
+title: jekyll-theme-1024Hertz
+description: A content-first, sliding sidebar theme for Jekyll.
+baseurl: ""
+tagline: 1024Hertz
+
+jekyll-theme-1024Hertz:
+  page:
+    title:
+      site_title:
+        disable: true
+  default:
+    body:
+      theme-base: theme-base-07
+      layout-reverse: false # 开启后sidebar在右边，反之左边
+      sidebar-overlay: false # 开启后正文不随sidebar移动而移动
+    masthead:
+      enable: true
+    sidebar:
+      avatar: # 侧边栏显示的头像
+        enable: true
+        img: https://gravatar.loli.net/avatar/dd4c26ebcf926f9c59b06e9951dac357?s=300 # 头像的地址
+      nav:
+        - title: '<i class="fas fa-home fa-fw"></i> 我的主页'
+          href: https://1024Hertz.github.io/
+        - title: '<i class="fas fa-file-code fa-fw"></i> 这篇文档'
+          href: /
+      simple_jekyll_search:
+        enable: false
+        full_text_search: false # 可能导致缓慢的搜索和加载
+      append_to_sidebar:
+        - | # 目录插件
+          <aside id="toc" style="max-height: 50vh;overflow: auto;">
+            目录
+          </aside>
+          <script
+            defer='defer'
+            src='https://cdn.jsdelivr.net/npm/html-contents/html-contents.min.js'
+            onload="htmlContents('#toc', {listType: 'o', filter: function(arr) {return !arr.matches('.masthead-title')}})"
+          ></script>
+        - | # Copyright
+          <div>
+            <i class="fas fa-copyright fa-fw"></i>
+            2020 1024Hertz
+          </div>
+        - | # 不蒜子页面统计
+          <div>
+            <div>
+              <i class="fas fa-eye fa-fw"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-pulse"></i>
+              </span>次
+            </div>
+            <div>
+              <i class="fas fa-paw fa-fw"></i>
+              <span id="busuanzi_value_site_pv">
+                <i class="fas fa-spinner fa-pulse"></i>
+              </span>枚
+            </div>
+            <div>
+              <i class="fas fa-user-friends fa-fw"></i>
+              <span id="busuanzi_value_site_uv">
+                <i class="fas fa-spinner fa-pulse"></i>
+              </span>人
+            </div>
+            <script
+              src='https://cdn.jsdelivr.net/npm/busuanzi'
+              defer='defer'
+            ></script>
+          </div>
+      wordcount:
+        enable: true
+        alert: <i class="fas fa-user-edit fa-fw"></i>
+        kilo: 千
+        unit: 字
+    append_to_head: # 通过内嵌html的方式引入并定制插件，删改前确定知道自己在做什么。
+      - |
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1"
+        />
+        <meta
+          http-equiv="content-type"
+          content="text/html; charset=utf-8"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          href="https://gravatar.loli.net/avatar/dd4c26ebcf926f9c59b06e9951dac357?s=300"
+        />
+        <link
+          rel="shortcut
+          icon"
+          href="https://gravatar.loli.net/avatar/dd4c26ebcf926f9c59b06e9951dac357?s=32"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/poole/lanyon@ac85a3115c094b3e6cb92cc41771e98b443f6c5d/public/css/poole.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/poole/lanyon@ac85a3115c094b3e6cb92cc41771e98b443f6c5d/public/css/lanyon.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"
+        />
+      - | # Katex
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"
+          defer="defer"
+        ></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"
+          defer="defer"
+          onload='renderMathInElement(document.body, { delimiters: [{ left: "$", right: "$", display: false }] })'
+        ></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/mathtex-script-type.min.js"
+          defer="defer"
+        ></script>
+      - | # live2d看板娘！
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/Dreamer-Paul/Pio@2.4/static/pio.min.css"
+        />
+        <script
+          defer="defer"
+          src="https://cdn.jsdelivr.net/gh/Dreamer-Paul/Pio@2.4/static/l2d.min.js"
+        ></script>
+        <script
+          defer="defer"
+          src="https://cdn.jsdelivr.net/gh/Dreamer-Paul/Pio@2.4/static/pio.min.js"
+          onload='
+            if (screen.width > screen.height)
+            {
+              let pio_container = document.createElement("div");
+              pio_container.classList.add("pio-container");
+              pio_container.classList.add("right");
+              pio_container.style.bottom = "-1rem";
+              document.body.insertAdjacentElement("beforeend", pio_container);
+              let pio_action = document.createElement("div");
+              pio_action.classList.add("pio-action");
+              pio_container.insertAdjacentElement("beforeend", pio_action);
+              let pio_canvas = document.createElement("canvas");
+              pio_canvas.id = "pio";
+              pio_canvas.style.width = "14rem";
+              pio_canvas.width = "600";
+              pio_canvas.height = "800";
+              pio_container.insertAdjacentElement("beforeend", pio_canvas);
+              let pio = new Paul_Pio({
+                "mode": "draggable",
+                "hidden": true,
+                "content": {
+                  "link": ["https://1024Hertz.github.io"],
+                  "skin": ["要换成我的朋友吗？", "让她放个假吧~"],
+                  "custom": [{
+                    "selector": "a",
+                    "type": "link",
+                  }, {
+                    "selector": ".sidebar-toggle",
+                    "text": "打开侧边栏叭~"
+                  }, {
+                    "selector": ".effect-info",
+                    "text": "哇，你发现了什么！"
+                  }, {
+                    "selector": "#toc",
+                    "text": "这是目录~"
+                  }, {
+                    "selector": ".page-title",
+                    "text": "这是标题~"
+                  }]
+                },
+                "model": [
+                  "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/33/model.2018.bls-winter.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/platelet-2/model.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/xiaomai/xiaomai.model.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/mashiro/seifuku.model.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/seele/model.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/Violet/14.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/xiaoski/live2d_models_collection/Kobayaxi/Kobayaxi.model.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/xiaoski/live2d_models_collection/mikoto/mikoto.model.json",
+                  "https:\/\/cdn.jsdelivr.net/gh/xiaoski/live2d_models_collection/uiharu/uiharu.model.json"]
+              });
+            }'
+        ></script>
+      - | # 在这里自定义页面样式吧
+        <style>
+        pre {
+          max-height: 50vh;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0);
+        }
+        img {
+          display: inline-block;
+          margin: 0;
+        }
+        .wrap {
+          display: inline-block;
+          background-size: 100vw auto;
+          background-position: center top;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-image: url(https://cdn.jsdelivr.net/gh/1024Hertz/jekyll-theme-1024Hertz/assets/image/two.webp);
+        }
+        @media (min-aspect-ratio: 2400/1850) {
+          .wrap {
+            background-image: url(https://cdn.jsdelivr.net/gh/1024Hertz/jekyll-theme-1024Hertz/assets/image/one.webp);
+          }
+        }
+        .masthead {
+          border-bottom: 0;
+          margin-bottom: 0;
+        }
+        .content {
+          background-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 9px 9px rgba(255, 255, 255, 0.8);
+          text-shadow: 1px 1px 1px #fff;
+        }
+        @media (min-width: 70em) {
+          .container {
+            max-width: 42rem;
+          }
+        }
+        @media (min-width: 96em) {
+          .container {
+            max-width: 48rem;
+          }
+        }
+        /* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
+        .sidebar-checkbox {
+          display: none;
+        }
+        .sidebar-toggle {
+          position: fixed;
+        }
+        .sidebar-toggle:before,
+        .sidebar-toggle:active:before,
+        #sidebar-checkbox:focus ~ .sidebar-toggle:before,
+        #sidebar-checkbox:checked ~ .sidebar-toggle:before {
+          background-image: none;
+        }
+        /*头像效果-start*/
+        .effect {
+          margin: 1rem;
+          -webkit-perspective: 900px;
+          -moz-perspective: 900px;
+          perspective: 900px;
+        }
+        .effect-info {
+          text-align: center;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          position: absolute;
+          top: 0;
+          -webkit-transform-style: preserve-3d;
+          -moz-transform-style: preserve-3d;
+          -ms-transform-style: preserve-3d;
+          -o-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+        }
+        .effect-img {
+          z-index: 11;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          -webkit-transition: all 0.5s ease-in-out;
+          -moz-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+        }
+        .effect-img:before {
+          position: absolute;
+          display: block;
+        }
+        .effect-right_to_left .effect-img {
+          -webkit-transform-origin: 0% 50%;
+          -moz-transform-origin: 0% 50%;
+          -ms-transform-origin: 0% 50%;
+          -o-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+        }
+        .effect-right_to_left:hover .effect-img {
+          -webkit-transform: rotate3d(0, 1, 0, -180deg);
+          -moz-transform: rotate3d(0, 1, 0, -180deg);
+          -ms-transform: rotate3d(0, 1, 0, -180deg);
+          -o-transform: rotate3d(0, 1, 0, -180deg);
+          transform: rotate3d(0, 1, 0, -180deg);
+        }
+        /*头像效果-end*/
+        </style>
+
+markdown: kramdown
+kramdown: # 见https://kramdown.gettalong.org/options.html
+  input: GFM # 见http://jekyllcn.com/docs/configuration/#kramdown
+  syntax_highlighter_opts: # 可见https://kramdown.gettalong.org/syntax_highlighter/rouge.html
+    disable: true # 关掉默认的高亮，换用prismjs
+
+# permalink: /_posts/:year-:month-:day-:title/ #生成文章的地址格式，我希望它和_posts目录下的格式一样
+# timezone: Asia/Shanghai # 解决githubpage显示时间不正确的问题，见https://www.iana.org/time-zones
+# future: false # 不发布时间在未来的文章
+
+# limit_posts: 999 # 限制博文数量
+# encoding: utf-8
+
+# 以下为 githubpage上不可修改的参数，见https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll
+#lsi: false # 为相关文章生成索引
+#safe: true # 禁用自定义插件
+#source: [your repo's top level directory] # Jekyll 读取文件的路径
+#incremental: false # 增量生成
+#highlighter: rouge # 代码高亮器
+#gist:
+#  noscript: false
+#kramdown:
+#  math_engine: mathjax
+#  syntax_highlighter: rouge
+
+plugins: # https://jekyllrb.com/docs/plugins/ githubpage上支持的插件见https://pages.github.com/versions/
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-seo-tag
+
+readme_index:
+  with_frontmatter: true
